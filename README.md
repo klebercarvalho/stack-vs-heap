@@ -3,7 +3,6 @@ Memory : Stack vs Heap
 
 ## Table of Contents
 
-* [Purpose](#purpose)
 * [Stack vs Heap](#stack-vs-heap)
 * [The Stack](#the-stack)
 * [The Heap](#the-heap)
@@ -69,6 +68,11 @@ Unlike the stack, variables created on the heap are accessible by any function, 
 
 Here is a short program that creates its variables on the <b>stack</b>. It looks like the other programs we have seen so far.
 
+```
+gcc -o StackExample StackExample.c
+./SteakExample
+```
+
 ```c
 #include <stdio.h>
 
@@ -93,11 +97,17 @@ int main (int argc, char *argv[])
 double your salary is 24691.340
 ```
 
+
 On lines 10, 11 and 12 we declare variables: an int, a double, and an array of three doubles. These three variables are pushed onto the stack as soon as the main() function allocates them. When the main() function exits (and the program stops) these variables are popped off of the stack. Similarly, in the function multiplyByTwo(), the twice variable, which is a double, is pushed onto the stack as soon as the multiplyByTwo() function allocates it. As soon as the multiplyByTwo() function exits, the twice variable is popped off of the stack, and is gone forever.
 
 As a side note, there is a way to tell C to keep a stack variable around, even after its creator function exits, and that is to use the static keyword when declaring the variable. A variable declared with the static keyword thus becomes something like a global variable, but one that is only visible inside the function that created it. It's a strange construction, one that you probably won't need except under very specific circumstances.
 
 Here is another version of this program that allocates all of its variables on the heap instead of the stack:
+
+```
+gcc -o HeapExample HeapExample.c
+./HeapExample
+```
 
 ```c
 #include <stdio.h>
